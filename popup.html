@@ -6,7 +6,7 @@
  -->
 <html>
   <head>
-    <title>TypeIt!</title>
+    <title align="center">TypeIt!</title>
     <style type="text/css">
       body {
         margin: 10px;
@@ -21,13 +21,12 @@
 
       #change-background {
         font-family: monospace;
-        margin-left: 10px;
       }
 
       #change-font {
         font-family: monospace;
-        margin-left: 10px;
       }
+
     </style>
 
     <!--
@@ -44,24 +43,9 @@
     <div id="container">
       <div id="change-background">
         <h3>Choose a background color</h3>
-        <select id="background-dropdown">
-          <option selected disabled hidden value=''></option>
-          <option value="white">White</option>
-          <option value="LightSkyBlue">Light Blue</option>
-          <option value="Blue">Blue</option>
-          <option value="Lavender">Lavender</option>
-          <option value="pink">Pink</option>
-          <option value="LightGreen">Light Green</option>
-          <option value="green">Green</option>
-          <option value="Olive">Olive Green</option>
-          <option value="yellow">Yellow</option>
-          <option value="Beige">Beige</option>
-          <option value="Brown">Brown</option>
-          <option value="Crimson">Crimson</option>
-          <option value="DarkGrey">Light Grey</option>
-          <option value="SlateGrey">Dark Grey</option>
-          <option value="Black">Black</option>
-        </select>
+        <form>
+          <input type="color" id="background" value="#ffffff">
+        </form>
       </div>
       <div id="change-font">
         <h3>Choose a font</h3>
@@ -80,6 +64,14 @@
           <option value="Courier">Courier</option>
           <option value="Lucida Console">Lucida</option>
         </select>
+      </div>
+      <div id="change-font-size">
+        <h3>Change font size</h3>
+        <form>
+          <button type="button" id="inc-font"> + </button>
+          <button type="button" id="init-font">Reset</button>
+          <button type="button" id="dec-font">  -  </button>
+        </form>
       </div>
     </div>
   </body>

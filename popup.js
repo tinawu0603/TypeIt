@@ -72,6 +72,18 @@ function changeFont(font) {
 }
 
 /**
+ * Change the font size of the current page.
+ *
+ * @param {string} fontSize The font size of the new font.
+ */
+ function changeFontSize(fontSize) {
+   var script = 'document.body.style.fontSize="' + fontSize + '";';
+   chrome.tabs.executeScript({
+     code: script
+   });
+ }
+
+/**
  * Gets the saved background color for url.
  *
  * @param {string} url URL whose background color is to be retrieved.
@@ -112,8 +124,12 @@ function saveBackgroundColor(url, color) {
 // user devices.
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
-    var bgdropdown = document.getElementById('background-dropdown');
+    var bgdropdown = document.getElementById('background');
     var fontdropdown = document.getElementById('font-dropdown');
+    var incfont = document.getElementById('inc-font');
+    var fontsize = 100;
+    var decfont = document.getElementById('dec-font');
+    var resetfont = document.getElementById('init-font');
 
     // Load the saved background color for this page and modify the dropdown
     // value, if needed.
@@ -134,5 +150,20 @@ document.addEventListener('DOMContentLoaded', () => {
     fontdropdown.addEventListener('change', () => {
       changeFont(fontdropdown.value);
     });
+
+    incfont.addEventListener('click', () => {
+      fontsize = fontsize + 10;
+      changeFontSize(fontsize + "%");
+    });
+    decfont.addEventListener('click', () => {
+      fontsize = fontsize - 10;
+      changeFontSize(fontsize + "%");
+    });
+    resetfont.addEventListener('click', () => {
+      fontsize = 100;
+      changeFontSize("100%");
+    })
+
+
   });
 });
