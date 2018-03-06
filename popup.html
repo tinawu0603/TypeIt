@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>TypeIt!</title>
+    <style type="text/css">
+      body {
+        margin: 10px;
+        font-family: monospace;
+      }
+
+      #container {
+        display: block;
+        font-size: 12px;
+        font-family: monospace;
+      }
+
+      #change-background {
+        font-family: monospace;
+        margin-left: 10px;
+      }
+
+      #change-font {
+        font-family: monospace;
+        margin-left: 10px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <h1>TypeIt!</h1>
+    <div id="container">
+      <div id="change-background">
+        <h3>Choose a background color</h3>
+        <select id="background-dropdown">
+          <option selected disabled hidden value=''></option>
+          <option value="white">White</option>
+          <option value="LightSkyBlue">Light Blue</option>
+          <option value="Blue">Blue</option>
+          <option value="Lavender">Lavender</option>
+          <option value="pink">Pink</option>
+          <option value="LightGreen">Light Green</option>
+          <option value="green">Green</option>
+          <option value="Olive">Olive Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="Beige">Beige</option>
+          <option value="Brown">Brown</option>
+          <option value="Crimson">Crimson</option>
+          <option value="DarkGrey">Light Grey</option>
+          <option value="SlateGrey">Dark Grey</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+      <div id="change-font">
+        <h3>Choose a font</h3>
+        <select id="font-dropdown">
+          <option selected disabled hidden value=''></option>
+          <option value="arial">Arial/Helvetica</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times">Times New Roman</option>
+          <option value="Arial Black">Arial Black</option>
+          <option value="Comic Sans MS">Comic Sans</option>
+          <option value="Impact">Impact</option>
+          <option value="Lucida Sans Unicode">Lucida</option>
+          <option value="Tahoma">Tahoma/Geneva</option>
+          <option value="Trebuchet MS">Trebuchet</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Courier">Courier</option>
+          <option value="Lucida Console">Lucida</option>
+        </select>
+      </div>
+    </div>
+  </body>
+</html>
