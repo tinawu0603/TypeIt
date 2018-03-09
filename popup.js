@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var fontsize = 100;
     var decfont = document.getElementById('dec-font');
     var resetfont = document.getElementById('init-font');
+    var slider = document.getElementById('fontRange');
 
     // Load the saved background color for this page and modify the dropdown
     // value, if needed.
@@ -151,18 +152,38 @@ document.addEventListener('DOMContentLoaded', () => {
       changeFont(fontdropdown.value);
     });
 
+/*
     incfont.addEventListener('click', () => {
-      fontsize = fontsize + 10;
+      fontsize = fontsize + 50;
       changeFontSize(fontsize + "%");
     });
     decfont.addEventListener('click', () => {
-      fontsize = fontsize - 10;
+      fontsize = fontsize - 50;
       changeFontSize(fontsize + "%");
     });
     resetfont.addEventListener('click', () => {
       fontsize = 100;
       changeFontSize("100%");
     })
+*/
+    slider.oninput = function() {
+      if (this.value == 1) {
+        changeFontSize("xx-small");
+      } else if (this.value == 2) {
+        changeFontSize("x-small");
+      } else if (this.value == 3)  {
+        changeFontSize("small");
+      } else if (this.value == 4) {
+        changeFontSize("medium");
+      } else if (this.value == 5) {
+        changeFontSize("large");
+      } else if (this.value == 6) {
+        changeFontSize("x-large");
+      } else if (this.value == 7) {
+        changeFontSize("xx-large");
+      }
+    }
+
 
 
   });
