@@ -6,25 +6,27 @@
  -->
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <title align="center">TypeIt!</title>
     <style type="text/css">
       body {
         margin: 10px;
-        font-family: monospace;
+        font-family: "Ubuntu";
+        width: 200px;
       }
 
       #container {
         display: block;
         font-size: 12px;
-        font-family: monospace;
+        font-family: "Ubuntu";
       }
 
       #change-background {
-        font-family: monospace;
+        font-family: "Ubuntu";
       }
 
       #change-font {
-        font-family: monospace;
+        font-family: "Ubuntu";
       }
 
       .slider {
@@ -88,19 +90,21 @@
           <option value="Lucida Console">Lucida</option>
         </select>
       </div>
-      <!--
-      <div id="change-font-size">
-        <h3>Change font size</h3>
+      <div id="change-font-color">
+        <h3>Choose a font color</h3>
         <form>
-          <button type="button" id="inc-font"> + </button>
-          <button type="button" id="init-font">Reset</button>
-          <button type="button" id="dec-font">  -  </button>
+          <input type="color" id="font-color" value="#ffffff">
         </form>
       </div>
-    -->
       <div id="change-font-size">
         <h3>Change font size</h3>
         <input type="range" min="1" max="7" value="4" class="slider" id="fontRange">
+      </div>
+      <div id="change-font-style">
+        <h3>Change font style</h3>
+        <button type="button" id="font-italics">Italics</button>
+        <button type="button" id="font-bold">Bold</button>
+        <button type="button" id="font-reset">Reset</button>
       </div>
     </div>
   </body>

@@ -60,6 +60,18 @@ function changeBackgroundColor(color) {
 }
 
 /**
+ * Change the font color of the current page.
+ *
+ * @param {string} color The new font color.
+ */
+ function changeFontColor(color) {
+   var script = 'document.body.style.color="' + color +'";';
+   chrome.tabs.executeScript({
+     code: script
+   });
+ }
+
+/**
  * Change the font of the current page.
  *
  * @param {string} font The new font.
@@ -82,6 +94,37 @@ function changeFont(font) {
      code: script
    });
  }
+
+ /**
+  * Change the font of the current page to italics.
+  *
+  */
+  function changeFontItalics() {
+    var script = 'document.body.style.fontStyle="italic";';
+    chrome.tabs.executeScript({
+      code: script
+    });
+  }
+
+  /**
+   * Change the font of the current page to bold.
+   */
+   function changeFontBold() {
+     var script = 'document.body.style.fontWeight="bold";';
+     chrome.tabs.executeScript({
+       code: script
+     });
+   }
+
+   /**
+    * Reset the font of the current page to without italics or bold.
+    */
+    function resetFontStyle() {
+      var script = 'document.body.style.fontWeight="normal";' + 'document.body.style.fontStyle="normal";';
+      chrome.tabs.executeScript({
+        code: script
+      });
+    }
 
 /**
  * Gets the saved background color for url.
@@ -126,11 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
     var bgdropdown = document.getElementById('background');
     var fontdropdown = document.getElementById('font-dropdown');
-    var incfont = document.getElementById('inc-font');
-    var fontsize = 100;
-    var decfont = document.getElementById('dec-font');
-    var resetfont = document.getElementById('init-font');
     var slider = document.getElementById('fontRange');
+    var fontcolor = document.getElementById('font-color');
+    var fontitalics = document.getElementById('font-italics');
+    var fontbold = document.getElementById('font-bold');
+    var fontreset = document.getElementById('font-reset');
 
     // Load the saved background color for this page and modify the dropdown
     // value, if needed.
@@ -152,20 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
       changeFont(fontdropdown.value);
     });
 
-/*
-    incfont.addEventListener('click', () => {
-      fontsize = fontsize + 50;
-      changeFontSize(fontsize + "%");
+    fontcolor.addEventListener('change', () => {
+      changeFontColor(fontcolor.value);
     });
-    decfont.addEventListener('click', () => {
-      fontsize = fontsize - 50;
-      changeFontSize(fontsize + "%");
-    });
-    resetfont.addEventListener('click', () => {
-      fontsize = 100;
-      changeFontSize("100%");
-    })
-*/
+
     slider.oninput = function() {
       if (this.value == 1) {
         changeFontSize("xx-small");
@@ -183,6 +216,18 @@ document.addEventListener('DOMContentLoaded', () => {
         changeFontSize("xx-large");
       }
     }
+
+    fontitalics.addEventListener('click', () => {
+      changeFontItalics();
+    });
+
+    fontbold.addEventListener('click', () => {
+      changeFontBold();
+    });
+
+    fontreset.addEventListener('click', () => {
+      resetFontStyle();
+    });
 
 
 
