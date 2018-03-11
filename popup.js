@@ -1,6 +1,6 @@
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+/**
+ * Author: Tina Wu
+ */
 
 /**
  * Get the current URL.
@@ -41,7 +41,7 @@ function changeBackgroundColor(color) {
  *
  * @param {string} color The new font color.
  */
- function changeFontColor(color) {
+function changeFontColor(color) {
    var script = 'document.body.style.color="' + color +'";';
    chrome.tabs.executeScript({
      code: script
@@ -65,7 +65,7 @@ function changeFont(font) {
  *
  * @param {string} fontSize The font size of the new font.
  */
- function changeFontSize(fontSize) {
+function changeFontSize(fontSize) {
    var script = 'document.body.style.fontSize="' + fontSize + '";';
    chrome.tabs.executeScript({
      code: script
@@ -76,7 +76,7 @@ function changeFont(font) {
   * Change the font of the current page to italics.
   *
   */
-  function changeFontItalics() {
+function changeFontItalics() {
     var script = 'document.body.style.fontStyle="italic";';
     chrome.tabs.executeScript({
       code: script
@@ -86,7 +86,7 @@ function changeFont(font) {
   /**
    * Change the font of the current page to bold.
    */
-   function changeFontBold() {
+  function changeFontBold() {
      var script = 'document.body.style.fontWeight="bold";';
      chrome.tabs.executeScript({
        code: script
@@ -96,37 +96,12 @@ function changeFont(font) {
    /**
     * Reset the font of the current page to without italics or bold.
     */
-    function resetFontStyle() {
+  function resetFontStyle() {
       var script = 'document.body.style.fontWeight="normal";' + 'document.body.style.fontStyle="normal";';
       chrome.tabs.executeScript({
         code: script
       });
     }
-
-/**
- * Gets the saved background color for url.
- *
- * @param {string} url URL whose background color is to be retrieved.
- * @param {function(string)} callback called with the saved background color for
- *     the given url on success, or a falsy value if no color is retrieved.
- */
-function getSavedBackgroundColor(url, callback) {
-  chrome.storage.sync.get(url, (items) => {
-    callback(chrome.runtime.lastError ? null : items[url]);
-  });
-}
-
-/**
- * Sets the given background color for url.
- *
- * @param {string} url URL for which background color is to be saved.
- * @param {string} color The background color to be saved.
- */
-function saveBackgroundColor(url, color) {
-  var items = {};
-  items[url] = color;
-  chrome.storage.sync.set(items);
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
@@ -138,17 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var fontbold = document.getElementById('font-bold');
     var fontreset = document.getElementById('font-reset');
 
-    // Load the saved background color for this page and modify the dropdown
-    // value, if needed.
-    getSavedBackgroundColor(url, (savedColor) => {
-      if (savedColor) {
-        changeBackgroundColor(savedColor);
-        bgdropdown.value = savedColor;
-      }
-    });
-
-    // Ensure the background color is changed and saved when the dropdown
-    // selection changes.
     bgdropdown.addEventListener('change', () => {
       changeBackgroundColor(bgdropdown.value);
       saveBackgroundColor(url, bgdropdown.value);
