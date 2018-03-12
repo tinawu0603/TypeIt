@@ -1,6 +1,8 @@
 Title: TypeIt!
-
+<br>
 Author: Tina Wu
+
+
 ---
 
 ## Why TypeIt!
