@@ -27,10 +27,10 @@ With this baby step accomplished, I took the next step and started integrating f
 I got into the rhythm of implementing new functionalities.
 1. Add a section for the new functionality to popup.html so it shows when the user clicks on the extension
 2. Add the components needed for the functionality to popup.html
-  1. color chooser for changing background colors
-  2. dropdown menu for changing fonts
+    1. color chooser for changing background colors
+    2. dropdown menu for changing fonts
 3. Add the JavaScript function for the specific action, and include the script needed to change aspects of the webpage
-  1. script to change fontFamily for changing fonts
+    1. script to change fontFamily for changing fonts
 4. Add the JavaScript EventListener so the program knows when the user has interacted with the extension (clicked a button, selected a dropdown menu item)
 
 Like letterpress printing, it was a process all the same. When our type wasn't printing clearly on the letterpress machine, we adapt, problem-solve, and try again. When a functionality wasn't working the way it should, I analyze, debug, and try again.
